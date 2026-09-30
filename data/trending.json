@@ -1,0 +1,70 @@
+{
+  "generatedAt": 1790702472697,
+  "source": "github.com/trending",
+  "items": [
+    {
+      "name": "debpalash/VoiceStudio",
+      "url": "https://github.com/debpalash/VoiceStudio",
+      "desc": "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.",
+      "stars": "47.3k",
+      "lang": "Python",
+      "color": "#3572A5"
+    },
+    {
+      "name": "NVIDIA/OpenShell",
+      "url": "https://github.com/NVIDIA/OpenShell",
+      "desc": "OpenShell is the safe, private runtime for autonomous AI agents.",
+      "stars": "10.3k",
+      "lang": "Rust",
+      "color": "#dea584"
+    },
+    {
+      "name": "vectorize-io/hindsight",
+      "url": "https://github.com/vectorize-io/hindsight",
+      "desc": "Hindsight: Agent Memory That Learns",
+      "stars": "42.5k",
+      "lang": "Python",
+      "color": "#3572A5"
+    },
+    {
+      "name": "paperclipai/paperclip",
+      "url": "https://github.com/paperclipai/paperclip",
+      "desc": "The open-source app everyone uses to manage agents at work",
+      "stars": "94.2k",
+      "lang": "TypeScript",
+      "color": "#3178c6"
+    },
+    {
+      "name": "t8y2/dbx",
+      "url": "https://github.com/t8y2/dbx",
+      "desc": "25 MB lightweight cross-platform database client for 100+ databases, including MySQL, PostgreSQL, SQLite, Redis, MongoDB, DuckDB, SQL Server, and Dameng. Built-in AI, MCP Server, CLI, desktop and Docker. | 轻量级跨平台数据库管理工具，支持 MySQL、PostgreSQL、SQLite、Redis、MongoDB、达梦等 100+ 数据库，提供桌面端、Docker、CLI、内置 AI 助手和 MCP。",
+      "stars": "21.8k",
+      "lang": "Rust",
+      "color": "#dea584"
+    },
+    {
+      "name": "mvschwarz/openrig",
+      "url": "https://github.com/mvschwarz/openrig",
+      "desc": "Multi-agent harness that runs Claude Code and Codex together as one system",
+      "stars": "2.2k",
+      "lang": "TypeScript",
+      "color": "#3178c6"
+    },
+    {
+      "name": "oblien/openship",
+      "url": "https://github.com/oblien/openship",
+      "desc": "Self-hosted deployment platform",
+      "stars": "13.7k",
+      "lang": "TypeScript",
+      "color": "#3178c6"
+    },
+    {
+      "name": "averygan/reclip",
+      "url": "https://github.com/averygan/reclip",
+      "desc": "Download videos from almost any website. Lightweight, self-hosted media downloader with a clean web UI.",
+      "stars": "9.9k",
+      "lang": "HTML",
+      "color": "#e34c26"
+    }
+  ]
+}

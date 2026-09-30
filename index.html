@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D打印前线 · 一周速览 | 2026.09.24 - 09.30</title>
+<style>
+  :root {
+    --bg: #0a0e14;
+    --bg-soft: #111722;
+    --card: #151d2b;
+    --card-hover: #1b2536;
+    --border: #232f45;
+    --text: #e6edf7;
+    --text-dim: #8b98ad;
+    --accent: #ff6a3d;
+    --accent2: #22d3ee;
+    --accent3: #a78bfa;
+    --green: #34d399;
+    --radius: 14px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", sans-serif;
+    line-height: 1.65;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ===== 背景光效 ===== */
+  .bg-glow {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(600px 400px at 15% -5%, rgba(255,106,61,.12), transparent 60%),
+      radial-gradient(700px 500px at 90% 10%, rgba(34,211,238,.10), transparent 60%),
+      radial-gradient(500px 400px at 50% 110%, rgba(167,139,250,.08), transparent 60%);
+  }
+
+  /* ===== 导航 ===== */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(14px);
+    background: rgba(10,14,20,.75);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 24px;
+    height: 60px; display: flex; align-items: center; gap: 28px;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .logo {
+    font-weight: 800; font-size: 18px; white-space: nowrap;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .nav-links { display: flex; gap: 4px; }
+  .nav-links a {
+    padding: 6px 12px; border-radius: 8px; font-size: 14px;
+    color: var(--text-dim); white-space: nowrap; transition: .2s;
+  }
+  .nav-links a:hover { color: var(--text); background: var(--card); }
+
+  /* ===== Hero ===== */
+  header {
+    max-width: 1200px; margin: 0 auto; padding: 88px 24px 56px;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; border-radius: 999px; font-size: 13px;
+    border: 1px solid var(--border); background: var(--card);
+    color: var(--accent2); margin-bottom: 20px;
+  }
+  .badge .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--green); box-shadow: 0 0 8px var(--green);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 50% { opacity: .4; } }
+  h1 {
+    font-size: clamp(34px, 6vw, 60px); font-weight: 900;
+    letter-spacing: -1px; line-height: 1.15;
+  }
+  h1 .grad {
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 60%, var(--accent3) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero-sub { margin-top: 18px; max-width: 640px; color: var(--text-dim); font-size: 17px; }
+  .hero-stats { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+  .stat {
+    padding: 14px 22px; border-radius: var(--radius);
+    background: var(--card); border: 1px solid var(--border); min-width: 130px;
+  }
+  .stat b { display: block; font-size: 26px; color: var(--accent2); }
+  .stat span { font-size: 13px; color: var(--text-dim); }
+
+  /* ===== 主体布局 ===== */
+  main { max-width: 1200px; margin: 0 auto; padding: 0 24px 40px; }
+  section { padding: 56px 0 8px; }
+  .sec-head { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+  .sec-num {
+    font-size: 14px; font-weight: 700; color: var(--accent);
+    font-family: "SF Mono", Menlo, monospace; letter-spacing: 2px;
+  }
+  h2 { font-size: clamp(24px, 3.5vw, 34px); font-weight: 800; letter-spacing: -.5px; }
+  .sec-desc { color: var(--text-dim); font-size: 15px; margin-bottom: 28px; }
+
+  /* ===== 新闻卡片 ===== */
+  .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+  .news-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px; transition: .25s;
+    display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden;
+  }
+  .news-card::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: linear-gradient(180deg, var(--accent), var(--accent2)); opacity: .7;
+  }
+  .news-card:hover { background: var(--card-hover); transform: translateY(-3px); border-color: #33415c; }
+  .news-meta { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--text-dim); }
+  .tag {
+    padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600;
+  }
+  .tag-hw { background: rgba(255,106,61,.15); color: var(--accent); }
+  .tag-tech { background: rgba(34,211,238,.13); color: var(--accent2); }
+  .tag-app { background: rgba(167,139,250,.15); color: var(--accent3); }
+  .tag-biz { background: rgba(52,211,153,.13); color: var(--green); }
+  .news-card h3 { font-size: 16.5px; font-weight: 700; line-height: 1.45; }
+  .news-card h3 a:hover { color: var(--accent2); }
+  .news-card p { font-size: 14px; color: var(--text-dim); flex: 1; }
+  .news-src { font-size: 12.5px; color: var(--text-dim); display: flex; justify-content: space-between; align-items: center; }
+  .news-src a { color: var(--accent2); font-weight: 600; }
+  .news-src a:hover { text-decoration: underline; }
+
+  /* ===== GitHub 项目 ===== */
+  .gh-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+  .gh-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 18px 20px; transition: .25s; display: flex; flex-direction: column; gap: 8px;
+  }
+  .gh-card:hover { background: var(--card-hover); transform: translateY(-3px); border-color: #33415c; }
+  .gh-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .gh-name { font-weight: 700; font-size: 15.5px; color: var(--accent2); word-break: break-all; }
+  .gh-name:hover { text-decoration: underline; }
+  .gh-star {
+    font-size: 12.5px; color: #fbbf24; white-space: nowrap;
+    font-family: "SF Mono", Menlo, monospace;
+  }
+  .gh-desc { font-size: 13.5px; color: var(--text-dim); flex: 1; }
+  .gh-lang { font-size: 12px; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
+  .lang-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+  /* ===== 网站导航 ===== */
+  .site-group-title {
+    font-size: 15px; font-weight: 700; color: var(--text-dim);
+    margin: 26px 0 14px; display: flex; align-items: center; gap: 10px;
+  }
+  .site-group-title::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+  .site-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+  .site-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 16px 18px; transition: .25s; display: block;
+  }
+  .site-card:hover { background: var(--card-hover); transform: translateY(-3px); border-color: var(--accent2); }
+  .site-name { font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+  .site-name .flag { font-size: 13px; }
+  .site-url { font-size: 12px; color: var(--accent2); font-family: "SF Mono", Menlo, monospace; margin: 2px 0 6px; }
+  .site-desc { font-size: 13px; color: var(--text-dim); }
+  .hot-badge {
+    font-size: 10.5px; padding: 1px 7px; border-radius: 999px;
+    background: rgba(255,106,61,.18); color: var(--accent); font-weight: 700;
+  }
+  .featured { border-color: rgba(255,106,61,.5); background: linear-gradient(160deg, rgba(255,106,61,.08), var(--card) 55%); }
+
+  /* ===== IP 趋势 ===== */
+  .ip-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .ip-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 18px; transition: .25s;
+  }
+  .ip-card:hover { background: var(--card-hover); transform: translateY(-3px); border-color: var(--accent3); }
+  .ip-emoji { font-size: 26px; }
+  .ip-card h4 { font-size: 15px; margin: 8px 0 4px; }
+  .ip-card p { font-size: 13px; color: var(--text-dim); }
+  .ip-rank {
+    float: right; font-family: "SF Mono", Menlo, monospace;
+    font-size: 20px; font-weight: 800; color: rgba(139,152,173,.35);
+  }
+
+  /* ===== 页脚 ===== */
+  footer {
+    border-top: 1px solid var(--border); margin-top: 72px;
+    padding: 36px 24px 48px; text-align: center;
+    color: var(--text-dim); font-size: 13px;
+  }
+  footer .src-links { display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: center; margin-top: 12px; }
+  footer a { color: var(--accent2); }
+  footer a:hover { text-decoration: underline; }
+
+  /* 回到顶部 */
+  #toTop {
+    position: fixed; right: 24px; bottom: 24px; z-index: 99;
+    width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--border);
+    background: var(--card); color: var(--text-dim); cursor: pointer;
+    font-size: 18px; display: none; transition: .2s;
+  }
+  #toTop:hover { color: var(--accent2); border-color: var(--accent2); }
+
+  @media (max-width: 640px) {
+    header { padding: 48px 20px 36px; }
+    main { padding: 0 20px 24px; }
+    section { padding: 40px 0 4px; }
+    .news-grid, .gh-grid, .site-grid, .ip-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 10px; }
+    .stat { flex: 1 1 40%; min-width: 0; padding: 12px 16px; }
+    .stat b { font-size: 22px; }
+    #toTop { right: 16px; bottom: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">⬡ 3D打印前线</div>
+    <div class="nav-links">
+      <a href="#news">前沿动态</a>
+      <a href="#github">GitHub 趋势</a>
+      <a href="#sites">模型网站</a>
+      <a href="#ip">热门 IP</a>
+      <a href="#oss">开源项目</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="badge"><span class="dot"></span><span id="refreshBadge">数据更新于 2026-09-30 · 覆盖最近一周</span></div>
+  <h1>3D 打印<span class="grad">一周前线</span></h1>
+  <p class="hero-sub">汇集本周增材制造行业新闻与技术前沿、GitHub 热门项目、全球热门模型网站直达、热门 IP 打印趋势与活跃开源社区项目。</p>
+  <div class="hero-stats">
+    <div class="stat"><b>12</b><span>本周要闻</span></div>
+    <div class="stat"><b>8</b><span>GitHub 趋势项目</span></div>
+    <div class="stat"><b>21</b><span>模型网站直达</span></div>
+    <div class="stat"><b>10</b><span>热门打印方向</span></div>
+    <div class="stat"><b>24</b><span>活跃开源项目</span></div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ 1. 前沿动态 ============ -->
+<section id="news">
+  <div class="sec-head"><span class="sec-num">01</span><h2>本周前沿技术与行业动态</h2></div>
+  <p class="sec-desc">2026 年 9 月下旬真实报道，来源：All3DP、3DPrint.com、Metal-AM、3D打印技术参考、3D打印网、PR Newswire</p>
+  <div class="news-grid" id="newsGrid">
+
+    <div class="news-card">
+      <div class="news-meta"><span class="tag tag-hw">新品</span><span>2026-09-22</span></div>
+      <h3><a href="https://all3dp.com/4/beyond-3d-printing-inside-bambu-labs-new-standalone-laser-cutter/" target="_blank" rel="noopener">拓竹发布 R1 独立激光切割机，跨界走出 3D 打印</a></h3>
+      <p>可切割木材、亚克力、皮革，并雕刻玻璃与石材，标志着拓竹向桌面制造全品类扩张。</p>
+      <div class="news-src"><span>Bambu Lab</span><a href="https://all3dp.com/4/beyond-3d-printing-inside-bambu-labs-new-standalone-laser-cutter/" target="_blank" rel="noopener">All3DP →</a></div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-meta"><span class="tag tag-hw">新品</span><span>2026-09-21</span></div>
+      <h3><a href="https://all3dp.com/6/crealitys-sparkx-i8-3d-printer-launches-on-indiegogo/" target="_blank" rel="noopener">创想三维 SparkX i8 四色打印机上线 Indiegogo</a></h3>
+      <p>QuarTeks 四通道喷嘴宣称多色打印"零冲刷"废料，早鸟价仅 289 美元。</p>
+      <div class="news-src"><span>Creality</span><a href="https://all3dp.com/6/crealitys-sparkx-i8-3d-printer-launches-on-indiegogo/" target="_blank" rel="noopener">All3DP →</a></div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-meta"><span class="tag tag-hw">新品</span><span>2026-09-23</span></div>
+      <h3><a href="https://all3dp.com/4/creality-launches-sermoon-p1s-3d-scanner/" target="_blank" rel="noopener">创想三维发布 Sermoon P1S 独立式 3D 扫描仪</a></h3>
+      <p>蓝光 + 近红外双光源，无需连接 PC 即可独立工作，降低逆向建模门槛。</p>
+      <div class="news-src"><span>Creality</span><a href="https://all3dp.com/4/creality-launches-sermoon-p1s-3d-scanner/" target="_blank" rel="noopener">All3DP →</a></div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-meta"><span class="tag tag-biz">行业</span><span>2026-09-06</span></div>
+      <h3><a href="https://www.prnewswire.com/news-releases/creality-unveils-k3-sparkx-i8-and-expanded-creative-ecosystem-at-ifa-2026-302870785.html" target="_blank" rel="noopener">IFA 2026 成多色打印风向标：K3 换喷嘴仅 4.8 秒</a></h3>
+      <p>创想 K3 多色方案省料 85%，M1 耗材回收机等获展会创新奖，多色省料竞赛白热化。</p>
+      <div class="news-src"><span>IFA Berlin</span><a href="https://www.prnewswire.com/news-releases/creality-unveils-k3-sparkx-i8-and-expanded-creative-ecosystem-at-ifa-2026-302870785.html" target="_blank" rel="noopener">PR Newswire →</a></div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-meta"><span class="tag tag-biz">行业</span><span>2026-09-22</span></div>
+      <h3><a href="https://all3dp.com/4/snapmaker-collabs-with-phaetus-for-up-to-87-more-flow-with-new-high-flow-u1-hotend/" target="_blank" rel="noopener">Snapmaker 开放模型库，联手 Phaetus 推 U1 高流量热端</a></h3>
+      <p>新热端流量提升 87%，同时上线 Snapmaker Space 模型平台，补齐软件生态。</p>
+      <div class="news-src"><span>Snapmaker × Phaetus</span><a href="https://all3dp.com/4/snapmaker-collabs-with-phaetus-for-up-to-87-more-flow-with-new-high-flow-u1-hotend/" target="_blank" rel="noopener">All3DP →</a></div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-meta"><span class="tag tag-hw">新品</span><span>2026-09-23</span></div>
+      <h3><a href="https://all3dp.com/4/what-do-you-get-when-you-cross-fdm-dlp-cnc-and-a-pellet-extruder-the-new-modular-printer-from-xyzo/" target="_blank" rel="noopener">XYZO 推出 FDM+DLP+CNC+颗粒挤出四合一模块平台</a></h3>
+      <p>一台机器覆盖四种制造工艺，模块化工具头自由切换，瞄准专业创客市场。</p>
+      <div class="news-src"><span>XYZO</span><a href="https://all3dp.com/4/what-do-you-get-when-you-cross-fdm-dlp-cnc-and-a-pellet-extruder-the-new-modular-printer-from-xyzo/" target="_blank" rel="noopener">All3DP →</a></div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-meta"><span class="tag tag-tech">前沿技术</span><span>2026-09-24</span></div>
+      <h3><a href="https://amreference.com/?p=31765" target="_blank" rel="noopener">EOS 钛合金满版打印孔隙率 &lt;0.005%</a></h3>
+      <p>IMTS 展上 M400-4 机型 24 小时批量打印 2500 个钛表壳，金属打印进军 3C 量产。</p>
+      <div class="news-src"><span>EOS @ IMTS</span><a href="https://amreference.com/?p=31765" target="_blank" rel="noopener">3D打印技术参考 →</a></div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-meta"><span class="tag tag-tech">前沿技术</span><span>2026-09-23</span></div>
+      <h3><a href="https://amreference.com/?p=31757" target="_blank" rel="noopener">波音 × 橡树岭 8 周打印双材料大型飞机模具</a></h3>
+      <p>电弧增材（WAAM）结合低碳钢与不锈钢，大型工装制造周期从数月压缩到数周。</p>
+      <div class="news-src"><span>Boeing × ORNL</span><a href="https://amreference.com/?p=31757" target="_blank" rel="noopener">3D打印技术参考 →</a></div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-meta"><span class="tag tag-app">应用</span><span>2026-09-26</span></div>
+      <h3><a href="https://3dprint.com/333478/3d-printing-news-briefs-9-26-2026/" target="_blank" rel="noopener">KLS Martin 将交付第 500 例 Lithoz 生物陶瓷定制植入物</a></h3>
+      <p>磷酸三钙（TCP）陶瓷植入物走向规模化临床应用，医疗增材制造里程碑。</p>
+      <div class="news-src"><span>KLS Martin × Lithoz</span><a href="https://3dprint.com/333478/3d-printing-news-briefs-9-26-2026/" target="_blank" rel="noopener">3DPrint.com →</a></div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-meta"><span class="tag tag-tech">前沿技术</span><span>2026-09-24</span></div>
+      <h3><a href="https://www.metal-am.com/amcm-integrates-panx-simulation-software-with-eosprint/" target="_blank" rel="noopener">AMCM 将 PanX 物理仿真集成进 EOSPRINT</a></h3>
+      <p>金属打印前预测热热点并自动补偿变形，首件成功率大幅提升。</p>
+      <div class="news-src"><span>AMCM</span><a href="https://www.metal-am.com/amcm-integrates-panx-simulation-software-with-eosprint/" target="_blank" rel="noopener">Metal-AM →</a></div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-meta"><span class="tag tag-app">应用</span><span>2026-09-17</span></div>
+      <h3><a href="https://amreference.com/?p=31738" target="_blank" rel="noopener">苹果扩大 3D 打印应用：折叠屏铰链轴盖采用增材工艺</a></h3>
+      <p>Apple Watch 之后，首款折叠屏机型关键结构件亦转向 3D 打印，3C 渗透加速。</p>
+      <div class="news-src"><span>Apple</span><a href="https://amreference.com/?p=31738" target="_blank" rel="noopener">3D打印技术参考 →</a></div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-meta"><span class="tag tag-app">应用</span><span>2026-09-28</span></div>
+      <h3><a href="https://www.china3dprint.com/archives/5782.html" target="_blank" rel="noopener">AI 芯片液冷散热需求爆发，带动金属 3D 打印增长</a></h3>
+      <p>港城大 × 剑桥成立 CASM 中心，专攻数据中心 3D 打印散热结构件。</p>
+      <div class="news-src"><span>CASM</span><a href="https://www.china3dprint.com/archives/5782.html" target="_blank" rel="noopener">3D打印网 →</a></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 2. GitHub 趋势 ============ -->
+<section id="github">
+  <div class="sec-head"><span class="sec-num">02</span><h2>GitHub 本周热门开源项目</h2></div>
+  <p class="sec-desc">github.com/trending 快照，联网访问时若发现更新数据会自动替换 · Star 数实时刷新</p>
+  <div class="gh-grid" id="trendGrid">
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/paperclipai/paperclip" target="_blank" rel="noopener">paperclipai/paperclip</a><span class="gh-star">★ ~84k</span></div>
+      <p class="gh-desc">像经营公司一样编排和管理 AI Agent 团队，本周最热项目。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#3178c6"></span>TypeScript</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/debpalash/VoiceStudio" target="_blank" rel="noopener">debpalash/VoiceStudio</a><span class="gh-star">★ ~44k</span></div>
+      <p class="gh-desc">全本地运行的 ElevenLabs 开源替代：声音克隆、配音、转录一体。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#3572A5"></span>Python</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/vectorize-io/hindsight" target="_blank" rel="noopener">vectorize-io/hindsight</a><span class="gh-star">★ ~30k</span></div>
+      <p class="gh-desc">会自我学习的 Agent 记忆系统，让 AI 助手拥有长期记忆。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#3572A5"></span>Python</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/dream-num/univer" target="_blank" rel="noopener">dream-num/univer</a><span class="gh-star">★ 10k+</span></div>
+      <p class="gh-desc">面向 AI Agent 时代的开源 Office 套件（文档/表格/幻灯片）。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#3178c6"></span>TypeScript</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/NVIDIA/OpenShell" target="_blank" rel="noopener">NVIDIA/OpenShell</a><span class="gh-star">★ 新晋</span></div>
+      <p class="gh-desc">英伟达出品：自主 AI Agent 的安全私有运行时环境。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#dea584"></span>Rust</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/t8y2/dbx" target="_blank" rel="noopener">t8y2/dbx</a><span class="gh-star">★ 新晋</span></div>
+      <p class="gh-desc">仅 25MB 的跨平台数据库客户端，支持 100+ 种数据库。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#dea584"></span>Rust</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/mvschwarz/openrig" target="_blank" rel="noopener">mvschwarz/openrig</a><span class="gh-star">★ 新晋</span></div>
+      <p class="gh-desc">Claude Code + Codex 多 Agent 协作编排框架。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#8b98ad"></span>多语言</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/VectifyAI/PageIndex" target="_blank" rel="noopener">VectifyAI/PageIndex</a><span class="gh-star">★ 数千</span></div>
+      <p class="gh-desc">无向量数据库的推理式 RAG 文档索引方案。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#3572A5"></span>Python</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 3. 模型网站导航 ============ -->
+<section id="sites">
+  <div class="sec-head"><span class="sec-num">03</span><h2>热门模型网站直达</h2></div>
+  <p class="sec-desc">覆盖国内外主流模型社区与市场，点击卡片直达官网</p>
+
+  <div class="site-group-title">🔥 顶流社区</div>
+  <div class="site-grid">
+    <a class="site-card featured" href="https://makerworld.com" target="_blank" rel="noopener">
+      <div class="site-name">MakerWorld 国际站 <span class="hot-badge">HOT</span></div>
+      <div class="site-url">makerworld.com</div>
+      <p class="site-desc">拓竹官方模型社区，全球用户量第一，免费模型多，支持 3MF 一键打印</p>
+    </a>
+    <a class="site-card featured" href="https://makerworld.com.cn" target="_blank" rel="noopener">
+      <div class="site-name">MakerWorld 国内站 <span class="hot-badge">HOT</span></div>
+      <div class="site-url">makerworld.com.cn</div>
+      <p class="site-desc">中国本地化版本，模型同步国际站，访问下载更快，中文社区活跃</p>
+    </a>
+    <a class="site-card" href="https://www.printables.com" target="_blank" rel="noopener">
+      <div class="site-name">Printables</div>
+      <div class="site-url">printables.com</div>
+      <p class="site-desc">Prusa 官方社区，免费开源为主，模型质量高</p>
+    </a>
+    <a class="site-card" href="https://www.thingiverse.com" target="_blank" rel="noopener">
+      <div class="site-name">Thingiverse</div>
+      <div class="site-url">thingiverse.com</div>
+      <p class="site-desc">全球最大免费模型库（250万+），2026 年被 MyMiniFactory 收购，全 CC 协议</p>
+    </a>
+    <a class="site-card featured" href="https://nexprint.com" target="_blank" rel="noopener">
+      <div class="site-name">Nexprint 国际站 <span class="hot-badge">NEW</span></div>
+      <div class="site-url">nexprint.com</div>
+      <p class="site-desc">爱乐酷（ELEGOO）官方开源模型平台，2025 年 8 月上线，与 OrcaSlicer/ElegooSlicer 深度集成，设创作者基金</p>
+    </a>
+    <a class="site-card featured" href="https://nexprint.cn" target="_blank" rel="noopener">
+      <div class="site-name">Nexprint 国内站 <span class="hot-badge">NEW</span></div>
+      <div class="site-url">nexprint.cn</div>
+      <p class="site-desc">爱乐酷模型平台中国版，访问下载更快，聚合第三方模型一站检索</p>
+    </a>
+  </div>
+
+  <div class="site-group-title">🌍 国际市场与搜索</div>
+  <div class="site-grid">
+    <a class="site-card" href="https://cults3d.com" target="_blank" rel="noopener">
+      <div class="site-name">Cults3D</div>
+      <div class="site-url">cults3d.com</div>
+      <p class="site-desc">欧洲最大免费+付费混合平台，艺术向模型多，设计师分成高</p>
+    </a>
+    <a class="site-card" href="https://www.myminifactory.com" target="_blank" rel="noopener">
+      <div class="site-name">MyMiniFactory</div>
+      <div class="site-url">myminifactory.com</div>
+      <p class="site-desc">付费精品为主，创作者生态成熟，已收购 Thingiverse</p>
+    </a>
+    <a class="site-card" href="https://thangs.com" target="_blank" rel="noopener">
+      <div class="site-name">Thangs</div>
+      <div class="site-url">thangs.com</div>
+      <p class="site-desc">3D 模型搜索引擎起家，支持以图搜模型，社区增长快</p>
+    </a>
+    <a class="site-card" href="https://www.cgtrader.com" target="_blank" rel="noopener">
+      <div class="site-name">CGTrader</div>
+      <div class="site-url">cgtrader.com</div>
+      <p class="site-desc">全球最大 3D 交易市场之一（170万+），覆盖游戏/影视/打印</p>
+    </a>
+    <a class="site-card" href="https://www.turbosquid.com" target="_blank" rel="noopener">
+      <div class="site-name">TurboSquid</div>
+      <div class="site-url">turbosquid.com</div>
+      <p class="site-desc">老牌专业模型市场（150万+），工业级模型多</p>
+    </a>
+    <a class="site-card" href="https://sketchfab.com" target="_blank" rel="noopener">
+      <div class="site-name">Sketchfab</div>
+      <div class="site-url">sketchfab.com</div>
+      <p class="site-desc">全球最大 3D 在线预览平台，商店已迁移至 Fab.com</p>
+    </a>
+    <a class="site-card" href="https://gambody.com" target="_blank" rel="noopener">
+      <div class="site-name">Gambody</div>
+      <div class="site-url">gambody.com</div>
+      <p class="site-desc">游戏/影视/动漫高精度付费 STL 市场，更新频繁，质量上乘</p>
+    </a>
+    <a class="site-card" href="https://pinshape.com" target="_blank" rel="noopener">
+      <div class="site-name">Pinshape</div>
+      <div class="site-url">pinshape.com</div>
+      <p class="site-desc">老牌模型市场（现归 All3DP 系），免费+付费混合</p>
+    </a>
+    <a class="site-card" href="https://fab365.net" target="_blank" rel="noopener">
+      <div class="site-name">Fab365</div>
+      <div class="site-url">fab365.net</div>
+      <p class="site-desc">韩国团队的可动/折叠式设计模型市场，一体打印结构巧妙</p>
+    </a>
+  </div>
+
+  <div class="site-group-title">🇨🇳 国内站点</div>
+  <div class="site-grid">
+    <a class="site-card" href="https://www.crealitycloud.com" target="_blank" rel="noopener">
+      <div class="site-name">创想云 Creality Cloud</div>
+      <div class="site-url">crealitycloud.com</div>
+      <p class="site-desc">创想三维官方社区，免费模型丰富，与打印机生态绑定</p>
+    </a>
+    <a class="site-card" href="https://www.dayin.la" target="_blank" rel="noopener">
+      <div class="site-name">打印啦</div>
+      <div class="site-url">dayin.la</div>
+      <p class="site-desc">国内老牌免费模型库（2012 年创立），10万+ 模型每日更新</p>
+    </a>
+    <a class="site-card" href="https://www.51jianmo.com" target="_blank" rel="noopener">
+      <div class="site-name">51建模网</div>
+      <div class="site-url">51jianmo.com</div>
+      <p class="site-desc">3D 交互展示平台，支持在线预览/编辑/格式转换</p>
+    </a>
+    <a class="site-card" href="https://www.makeronline.com" target="_blank" rel="noopener">
+      <div class="site-name">Makeronline</div>
+      <div class="site-url">makeronline.com</div>
+      <p class="site-desc">纵维立方（Anycubic）旗下模型社区，15万+ 模型、近 20 万创作者</p>
+    </a>
+    <a class="site-card" href="https://www.enjoying3d.com" target="_blank" rel="noopener">
+      <div class="site-name">Enjoying3D</div>
+      <div class="site-url">enjoying3d.com</div>
+      <p class="site-desc">国内模型分享平台，免费+付费混合</p>
+    </a>
+    <a class="site-card" href="https://www.mojin3d.com" target="_blank" rel="noopener">
+      <div class="site-name">模金网</div>
+      <div class="site-url">mojin3d.com</div>
+      <p class="site-desc">国内模型交易平台，以付费精品为主</p>
+    </a>
+  </div>
+</section>
+
+<!-- ============ 4. 热门 IP ============ -->
+<section id="ip">
+  <div class="sec-head"><span class="sec-num">04</span><h2>热门 IP 与打印趋势</h2></div>
+  <p class="sec-desc">多色 AMS 普及后，"免上色直接出片"的 IP 手办成为最大流量入口</p>
+  <div class="ip-grid">
+
+    <div class="ip-card"><span class="ip-rank">01</span><div class="ip-emoji">⚡</div><h4>动漫游戏手办</h4><p>宝可梦、龙珠、原神等 Chibi 风格多色手办，FDM 免涂装直出接近成品</p></div>
+    <div class="ip-card"><span class="ip-rank">02</span><div class="ip-emoji">🐵</div><h4>黑神话：悟空</h4><p>国产 3A 带动角色、武器、场景模型需求爆发，金箍棒摆件随处可见</p></div>
+    <div class="ip-card"><span class="ip-rank">03</span><div class="ip-emoji">🐉</div><h4>关节龙 / 龙蛋</h4><p>Print-in-place 一体成型可动结构 + 多色皮肤，摆件解压双属性</p></div>
+    <div class="ip-card"><span class="ip-rank">04</span><div class="ip-emoji">🌀</div><h4>解压玩具 Fidget</h4><p>齿轮球、Clicker、Twist Egg 等机械结构玩具热度持续，桌面场景刚需</p></div>
+    <div class="ip-card"><span class="ip-rank">05</span><div class="ip-emoji">🖼️</div><h4>Hueforge 浮雕画</h4><p>利用透光率差异的"耗材作画"，动漫影视 IP 肖像画订单量大</p></div>
+    <div class="ip-card"><span class="ip-rank">06</span><div class="ip-emoji">🧰</div><h4>Gridfinity 收纳</h4><p>模块化桌面收纳系统，极客办公人群刚需，衍生配件生态极其繁荣</p></div>
+    <div class="ip-card"><span class="ip-rank">07</span><div class="ip-emoji">🦎</div><h4>可动关节动物</h4><p>Flexi 系列一体打印免组装，猫狗恐龙蛇等造型长盛不衰</p></div>
+    <div class="ip-card"><span class="ip-rank">08</span><div class="ip-emoji">🗡️</div><h4>Cosplay 道具复刻</h4><p>巫师、最终幻想、星战等武器道具，多色分件打印大幅降低制作门槛</p></div>
+    <div class="ip-card"><span class="ip-rank">09</span><div class="ip-emoji">🏰</div><h4>微缩场景 / DND 地形</h4><p>跑团战棋玩家群体稳定，模块化地形建筑模型持续热门</p></div>
+    <div class="ip-card"><span class="ip-rank">10</span><div class="ip-emoji">🤖</div><h4>AI 生成 3D 模型</h4><p>Meshy / Tripo 等文生 3D 工具普及，个性化定制模型成新增长点</p></div>
+
+  </div>
+</section>
+
+<!-- ============ 5. 开源 3D 打印项目 ============ -->
+<section id="oss">
+  <div class="sec-head"><span class="sec-num">05</span><h2>热门开源 3D 打印 & 机器人项目</h2></div>
+  <p class="sec-desc">均已核实仍在活跃维护；GitHub Star 数在打开页面时自动实时刷新（无 ~ 前缀即为实时值）</p>
+  <div class="site-group-title">🖨️ 3D 打印</div>
+  <div class="gh-grid">
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/MarlinFirmware/Marlin" target="_blank" rel="noopener">MarlinFirmware/Marlin</a><span class="gh-star">★ ~17.6k</span></div>
+      <p class="gh-desc">最主流的 3D 打印机固件，几乎所有入门机的底层选择。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#f34b7d"></span>C++ · 固件</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/OrcaSlicer/OrcaSlicer" target="_blank" rel="noopener">OrcaSlicer/OrcaSlicer</a><span class="gh-star">★ ~16k</span></div>
+      <p class="gh-desc">社区旗舰切片器（Bambu Studio 分支），校准工具强大，增长最快。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#f34b7d"></span>C++ · 切片软件</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/Klipper3d/klipper" target="_blank" rel="noopener">Klipper3d/klipper</a><span class="gh-star">★ ~11.9k</span></div>
+      <p class="gh-desc">高性能固件：树莓派做运动学计算，MCU 只做执行，高速打印标配。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#3572A5"></span>C / Python · 固件</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/prusa3d/PrusaSlicer" target="_blank" rel="noopener">prusa3d/PrusaSlicer</a><span class="gh-star">★ ~9.2k</span></div>
+      <p class="gh-desc">Prusa 官方开源切片器，众多衍生切片器的共同上游。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#f34b7d"></span>C++ · 切片软件</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/OctoPrint/OctoPrint" target="_blank" rel="noopener">OctoPrint/OctoPrint</a><span class="gh-star">★ ~9.1k</span></div>
+      <p class="gh-desc">经典打印远程管理 Web 界面，插件生态庞大。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#3572A5"></span>Python · 远程控制</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/openscad/openscad" target="_blank" rel="noopener">openscad/openscad</a><span class="gh-star">★ ~6.2k</span></div>
+      <p class="gh-desc">用代码做参数化 3D 建模，程序员最爱的 CAD。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#f34b7d"></span>C++ · 建模</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/bambulab/BambuStudio" target="_blank" rel="noopener">bambulab/BambuStudio</a><span class="gh-star">★ ~5.1k</span></div>
+      <p class="gh-desc">拓竹官方切片器，与 AMS 多色系统深度整合。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#f34b7d"></span>C++ · 切片软件</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/VoronDesign/Voron-2" target="_blank" rel="noopener">VoronDesign/Voron-2</a><span class="gh-star">★ ~4.5k</span></div>
+      <p class="gh-desc">传奇 CoreXY 开源打印机设计，DIY 高速机的标杆之作。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#8b98ad"></span>CAD · 整机设计</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/mainsail-crew/mainsail" target="_blank" rel="noopener">mainsail-crew/mainsail</a><span class="gh-star">★ ~2.2k</span></div>
+      <p class="gh-desc">Klipper 生态最主流的 Web 控制界面。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#41b883"></span>Vue · Web 界面</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/fluidd-core/fluidd" target="_blank" rel="noopener">fluidd-core/fluidd</a><span class="gh-star">★ ~1.8k</span></div>
+      <p class="gh-desc">轻量现代的 Klipper Web 界面，响应迅速。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#41b883"></span>Vue / TS · Web 界面</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/zackfreedman/gridfinity" target="_blank" rel="noopener">zackfreedman/gridfinity</a><span class="gh-star">★ 生态火爆</span></div>
+      <p class="gh-desc">Zack Freedman 的模块化收纳打印规范，社区衍生模型数以万计。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#8b98ad"></span>开放规范 · 收纳</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/GridSpace/kirimoto" target="_blank" rel="noopener">GridSpace/kirimoto</a><span class="gh-star">★ 千级</span></div>
+      <p class="gh-desc">纯浏览器端切片器，FDM / CNC / 激光三合一，无需安装。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#f1e05a"></span>JavaScript · 切片软件</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/Rat-Rig/V-core-3" target="_blank" rel="noopener">Rat-Rig/V-core-3</a><span class="gh-star">★ ~1k+</span></div>
+      <p class="gh-desc">模块化 CoreXY 开源打印机平台，大尺寸 DIY 热门之选。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#8b98ad"></span>CAD · 整机设计</div>
+    </div>
+
+  </div>
+
+  <div class="site-group-title">🤖 机器人（多为 3D 打印结构件，低成本可复刻）</div>
+  <div class="gh-grid">
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/huggingface/lerobot" target="_blank" rel="noopener">huggingface/lerobot</a><span class="gh-star">★ ~27.8k</span></div>
+      <p class="gh-desc">Hugging Face 机器人学习框架，让训练真实机械臂像训模型一样简单，开源机器人事实标准。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#3572A5"></span>Python · 机器人学习</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/TheRobotStudio/SO-ARM100" target="_blank" rel="noopener">TheRobotStudio/SO-ARM100</a><span class="gh-star">★ ~7.5k</span></div>
+      <p class="gh-desc">百元级 3D 打印开源机械臂（SO-100/SO-101 同仓），lerobot 生态入门标配。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#8b98ad"></span>CAD/3D打印 · 机械臂</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/Vector-Wangel/XLeRobot" target="_blank" rel="noopener">Vector-Wangel/XLeRobot</a><span class="gh-star">★ ~5.6k</span></div>
+      <p class="gh-desc">$660 双臂移动家用机器人，基于 SO-101 + 宜家推车改造，3 小时可装好。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#3572A5"></span>Python · 双臂机器人</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/PetoiCamp/OpenCat-Quadruped-Robot" target="_blank" rel="noopener">PetoiCamp/OpenCat-Quadruped-Robot</a><span class="gh-star">★ ~5.4k</span></div>
+      <p class="gh-desc">开源四足机器人（Bittle 机器狗 / Nybble 机器猫），Arduino + 3D 打印骨架。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#f34b7d"></span>C++ · 四足机器人</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/dorianborian/sesame-robot" target="_blank" rel="noopener">dorianborian/sesame-robot</a><span class="gh-star">★ ~4.5k</span></div>
+      <p class="gh-desc">2025 年 11 月新出即爆火：ESP32 + 8 舵机、成本 <$60 的表情四足桌面机器人。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#f34b7d"></span>C++ · 桌面机器人</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/dora-rs/dora" target="_blank" rel="noopener">dora-rs/dora</a><span class="gh-star">★ ~4.0k</span></div>
+      <p class="gh-desc">Rust 写的机器人数据流中间件，替代 ROS 的新锐选择，提交非常活跃。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#dea584"></span>Rust · 中间件</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/tonyzhaozh/aloha" target="_blank" rel="noopener">tonyzhaozh/aloha</a><span class="gh-star">★ ~3.5k</span></div>
+      <p class="gh-desc">斯坦福 ALOHA 双臂遥操作平台，模仿学习家务任务的开山之作（含 ALOHA 2）。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#3572A5"></span>Python · 双臂遥操作</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/enactic/openarm" target="_blank" rel="noopener">enactic/openarm</a><span class="gh-star">★ ~3k</span></div>
+      <p class="gh-desc">开源人形机械臂 OpenArm 2.0，双臂 BOM 约 $6,500，全开放 CAD 与文档。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#8b98ad"></span>CAD · 人形机械臂</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/apirrone/Open_Duck_Mini" target="_blank" rel="noopener">apirrone/Open_Duck_Mini</a><span class="gh-star">★ ~1.9k</span></div>
+      <p class="gh-desc">开源双足"小鸭子"机器人，3D 打印 + RL 行走控制，Discord 社区活跃。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#3572A5"></span>Python · 双足机器人</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://github.com/HybridRobotics/Berkeley-Humanoid-Lite" target="_blank" rel="noopener">HybridRobotics/Berkeley-Humanoid-Lite</a><span class="gh-star">★ 新兴</span></div>
+      <p class="gh-desc">UC 伯克利 3D 打印开源人形机器人，整机成本 <$5,000，RSS 2025 明星项目。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#3572A5"></span>Python · 人形机器人</div>
+    </div>
+
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="https://www.inmoov.fr" target="_blank" rel="noopener">InMoov 人形机器人</a><span class="gh-star">经典</span></div>
+      <p class="gh-desc">全球首个全 3D 打印真人大小人形机器人（无统一 GitHub 仓库，主站持续维护，配 MyRobotLab 控制）。</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:#8b98ad"></span>3D打印 · 人形机器人</div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div>⬡ 3D打印前线 · 数据更新于 2026-09-30（覆盖 9.24 – 9.30）</div>
+  <div class="src-links">
+    数据来源：
+    <a href="https://all3dp.com" target="_blank" rel="noopener">All3DP</a>
+    <a href="https://3dprint.com" target="_blank" rel="noopener">3DPrint.com</a>
+    <a href="https://www.metal-am.com" target="_blank" rel="noopener">Metal-AM</a>
+    <a href="https://amreference.com" target="_blank" rel="noopener">3D打印技术参考</a>
+    <a href="https://www.china3dprint.com" target="_blank" rel="noopener">3D打印网</a>
+    <a href="https://github.com/trending" target="_blank" rel="noopener">GitHub Trending</a>
+  </div>
+  <div style="margin-top:10px">联网访问时，新闻与 GitHub 趋势板块会自动更新（数据文件由 update.py 每周生成）；Star 数打开页面时实时刷新</div>
+  <div style="margin-top:6px">本站仅作资讯聚合与导航，各网站商标归原公司所有</div>
+</footer>
+
+<button id="toTop" title="回到顶部">↑</button>
+
+<script>
+  const toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', () => {
+    toTop.style.display = window.scrollY > 600 ? 'block' : 'none';
+  });
+  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // 滚动渐入动画
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.news-card, .gh-card, .site-card, .ip-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(18px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease, background .25s, border-color .25s';
+    observer.observe(el);
+  });
+
+  // ===== GitHub Star 实时刷新（localStorage 缓存 6 小时，避免触发限流）=====
+  function refreshStars() {
+    const CACHE_KEY = 'gh-stars-v1';
+    let cache = {};
+    try { cache = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}'); } catch (e) {}
+    const now = Date.now(), TTL = 6 * 3600 * 1000;
+    const pending = new Map(); // repo -> [star元素...]
+    document.querySelectorAll('.gh-card').forEach(card => {
+      const a = card.querySelector('a.gh-name');
+      const starEl = card.querySelector('.gh-star');
+      const m = a && a.href.match(/github\.com\/([^/?#]+\/[^/?#]+)/);
+      if (!m || !starEl) return;
+      const repo = m[1];
+      const hit = cache[repo];
+      if (hit && now - hit.t < TTL) { starEl.textContent = '★ ' + hit.s; return; }
+      if (!pending.has(repo)) pending.set(repo, []);
+      pending.get(repo).push(starEl);
+    });
+    const fmt = n => n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : String(n);
+    pending.forEach(async (els, repo) => {
+      try {
+        const r = await fetch('https://api.github.com/repos/' + repo);
+        if (!r.ok) return; // 限流/404 时保留快照值
+        const d = await r.json();
+        const s = fmt(d.stargazers_count);
+        els.forEach(el => el.textContent = '★ ' + s);
+        cache[repo] = { s, t: now };
+        localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
+      } catch (e) { /* 网络失败时静默保留快照值 */ }
+    });
+  }
+  refreshStars();
+
+  // ===== 自动更新：联网时加载 data/*.json（由 update.py 每周生成），失败则保留页面快照 =====
+  const TAG_MAP = { hw: '新品', biz: '行业', tech: '前沿技术', app: '应用' };
+  function animateNew(grid, cls) {
+    grid.querySelectorAll(cls).forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(18px)';
+      el.style.transition = 'opacity .5s ease, transform .5s ease, background .25s, border-color .25s';
+      observer.observe(el);
+    });
+  }
+  function markFresh(ts) {
+    const badge = document.getElementById('refreshBadge');
+    if (badge) badge.textContent = '✓ 已自动更新 · 数据时间 ' +
+      new Date(ts).toLocaleString('zh-CN', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+  }
+  async function loadFresh(file, apply) {
+    try {
+      const r = await fetch('data/' + file + '?t=' + Date.now());
+      if (!r.ok) return;
+      const d = await r.json();
+      if (!d.generatedAt || Date.now() - d.generatedAt > 7 * 864e5) return; // 超过一周视为过期，保留快照
+      if (d.items && d.items.length && apply(d)) markFresh(d.generatedAt);
+    } catch (e) { /* file:// 或无数据文件时静默 */ }
+  }
+
+  loadFresh('news.json', d => {
+    const grid = document.getElementById('newsGrid');
+    grid.innerHTML = d.items.map(n => `
+    <div class="news-card">
+      <div class="news-meta"><span class="tag tag-${n.tag || 'tech'}">${TAG_MAP[n.tag] || '前沿'}</span><span>${n.date}</span></div>
+      <h3><a href="${n.url}" target="_blank" rel="noopener">${n.title}</a></h3>
+      ${n.desc ? `<p>${n.desc}</p>` : '<p style="flex:1"></p>'}
+      <div class="news-src"><span>${n.who || ''}</span><a href="${n.url}" target="_blank" rel="noopener">${n.source} →</a></div>
+    </div>`).join('');
+    animateNew(grid, '.news-card');
+    return true;
+  });
+
+  loadFresh('trending.json', d => {
+    const grid = document.getElementById('trendGrid');
+    grid.innerHTML = d.items.map(p => `
+    <div class="gh-card">
+      <div class="gh-top"><a class="gh-name" href="${p.url}" target="_blank" rel="noopener">${p.name}</a><span class="gh-star">★ ${p.stars}</span></div>
+      <p class="gh-desc">${p.desc}</p>
+      <div class="gh-lang"><span class="lang-dot" style="background:${p.color || '#8b98ad'}"></span>${p.lang}</div>
+    </div>`).join('');
+    animateNew(grid, '.gh-card');
+    refreshStars(); // 新渲染的卡片也刷新实时 star
+    return true;
+  });
+</script>
+
+</body>
+</html>
