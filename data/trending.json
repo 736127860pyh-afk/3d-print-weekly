@@ -1,70 +1,70 @@
 {
-  "generatedAt": 1790733729360,
+  "generatedAt": 1791169594665,
   "source": "github.com/trending",
   "items": [
     {
-      "name": "debpalash/VoiceStudio",
-      "url": "https://github.com/debpalash/VoiceStudio",
-      "desc": "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.",
-      "stars": "48.3k",
+      "name": "tester-army/e2e",
+      "url": "https://github.com/tester-army/e2e",
+      "desc": "Next generation e2e testing framework for web and mobile apps.",
+      "stars": "3.2k",
+      "lang": "TypeScript",
+      "color": "#3178c6"
+    },
+    {
+      "name": "pbakaus/impeccable",
+      "url": "https://github.com/pbakaus/impeccable",
+      "desc": "The design language that makes your AI harness better at design.",
+      "stars": "76.4k",
+      "lang": "JavaScript",
+      "color": "#f1e05a"
+    },
+    {
+      "name": "coreyhaines31/marketingskills",
+      "url": "https://github.com/coreyhaines31/marketingskills",
+      "desc": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering.",
+      "stars": "53.1k",
+      "lang": "JavaScript",
+      "color": "#f1e05a"
+    },
+    {
+      "name": "DietrichGebert/ponytail",
+      "url": "https://github.com/DietrichGebert/ponytail",
+      "desc": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
+      "stars": "155k",
+      "lang": "JavaScript",
+      "color": "#f1e05a"
+    },
+    {
+      "name": "earthtojake/text-to-cad",
+      "url": "https://github.com/earthtojake/text-to-cad",
+      "desc": "Give your agent CAD superpowers.",
+      "stars": "16.9k",
       "lang": "Python",
       "color": "#3572A5"
     },
     {
-      "name": "NVIDIA/OpenShell",
-      "url": "https://github.com/NVIDIA/OpenShell",
-      "desc": "OpenShell is the safe, private runtime for autonomous AI agents.",
-      "stars": "10.7k",
-      "lang": "Rust",
-      "color": "#dea584"
-    },
-    {
-      "name": "vectorize-io/hindsight",
-      "url": "https://github.com/vectorize-io/hindsight",
-      "desc": "Hindsight: Agent Memory That Learns",
-      "stars": "42.9k",
+      "name": "Panniantong/Agent-Reach",
+      "url": "https://github.com/Panniantong/Agent-Reach",
+      "desc": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.",
+      "stars": "91k",
       "lang": "Python",
       "color": "#3572A5"
     },
     {
-      "name": "paperclipai/paperclip",
-      "url": "https://github.com/paperclipai/paperclip",
-      "desc": "The open-source app everyone uses to manage agents at work",
-      "stars": "94.5k",
-      "lang": "TypeScript",
-      "color": "#3178c6"
+      "name": "getsentry/sentry",
+      "url": "https://github.com/getsentry/sentry",
+      "desc": "Developer-first error tracking and performance monitoring",
+      "stars": "45.4k",
+      "lang": "Python",
+      "color": "#3572A5"
     },
     {
-      "name": "t8y2/dbx",
-      "url": "https://github.com/t8y2/dbx",
-      "desc": "25 MB lightweight cross-platform database client for 100+ databases, including MySQL, PostgreSQL, SQLite, Redis, MongoDB, DuckDB, SQL Server, and Dameng. Built-in AI, MCP Server, CLI, desktop and Docker. | 轻量级跨平台数据库管理工具，支持 MySQL、PostgreSQL、SQLite、Redis、MongoDB、达梦等 100+ 数据库，提供桌面端、Docker、CLI、内置 AI 助手和 MCP。",
-      "stars": "22.1k",
-      "lang": "Rust",
-      "color": "#dea584"
-    },
-    {
-      "name": "mvschwarz/openrig",
-      "url": "https://github.com/mvschwarz/openrig",
-      "desc": "Multi-agent harness that runs Claude Code and Codex together as one system",
-      "stars": "2.5k",
-      "lang": "TypeScript",
-      "color": "#3178c6"
-    },
-    {
-      "name": "oblien/openship",
-      "url": "https://github.com/oblien/openship",
-      "desc": "Self-hosted deployment platform",
-      "stars": "13.9k",
-      "lang": "TypeScript",
-      "color": "#3178c6"
-    },
-    {
-      "name": "averygan/reclip",
-      "url": "https://github.com/averygan/reclip",
-      "desc": "Download videos from almost any website. Lightweight, self-hosted media downloader with a clean web UI.",
-      "stars": "10.2k",
-      "lang": "HTML",
-      "color": "#e34c26"
+      "name": "calesthio/OpenMontage",
+      "url": "https://github.com/calesthio/OpenMontage",
+      "desc": "World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.",
+      "stars": "63.3k",
+      "lang": "Python",
+      "color": "#3572A5"
     }
   ]
 }
