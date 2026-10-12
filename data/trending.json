@@ -1,70 +1,70 @@
 {
-  "generatedAt": 1791169594665,
+  "generatedAt": 1791774446911,
   "source": "github.com/trending",
   "items": [
     {
-      "name": "tester-army/e2e",
-      "url": "https://github.com/tester-army/e2e",
-      "desc": "Next generation e2e testing framework for web and mobile apps.",
-      "stars": "3.2k",
+      "name": "morluto/rea",
+      "url": "https://github.com/morluto/rea",
+      "desc": "Reverse engineer anything with agents, from app behavior down to native binaries.",
+      "stars": "110.9k",
       "lang": "TypeScript",
       "color": "#3178c6"
     },
     {
-      "name": "pbakaus/impeccable",
-      "url": "https://github.com/pbakaus/impeccable",
-      "desc": "The design language that makes your AI harness better at design.",
-      "stars": "76.4k",
+      "name": "boykopovar/AnyPS5",
+      "url": "https://github.com/boykopovar/AnyPS5",
+      "desc": "Tool for automatic PS5 executables porting to Linux and Windows",
+      "stars": "30.4k",
+      "lang": "C++",
+      "color": "#f34b7d"
+    },
+    {
+      "name": "storytold/artcraft",
+      "url": "https://github.com/storytold/artcraft",
+      "desc": "ArtCraft is an intentional crafting engine for artists, designers, and filmmakers",
+      "stars": "18.3k",
+      "lang": "Rust",
+      "color": "#dea584"
+    },
+    {
+      "name": "cathrynlavery/diagram-design",
+      "url": "https://github.com/cathrynlavery/diagram-design",
+      "desc": "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Cursor, Factory Droid, and Pi. 44 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop.",
+      "stars": "50.6k",
+      "lang": "HTML",
+      "color": "#e34c26"
+    },
+    {
+      "name": "bilawalsidhu/gods-eye-view",
+      "url": "https://github.com/bilawalsidhu/gods-eye-view",
+      "desc": "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.",
+      "stars": "51.9k",
       "lang": "JavaScript",
       "color": "#f1e05a"
     },
     {
-      "name": "coreyhaines31/marketingskills",
-      "url": "https://github.com/coreyhaines31/marketingskills",
-      "desc": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering.",
-      "stars": "53.1k",
-      "lang": "JavaScript",
-      "color": "#f1e05a"
-    },
-    {
-      "name": "DietrichGebert/ponytail",
-      "url": "https://github.com/DietrichGebert/ponytail",
-      "desc": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
-      "stars": "155k",
-      "lang": "JavaScript",
-      "color": "#f1e05a"
-    },
-    {
-      "name": "earthtojake/text-to-cad",
-      "url": "https://github.com/earthtojake/text-to-cad",
-      "desc": "Give your agent CAD superpowers.",
-      "stars": "16.9k",
+      "name": "pytorch/pytorch",
+      "url": "https://github.com/pytorch/pytorch",
+      "desc": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
+      "stars": "104.6k",
       "lang": "Python",
       "color": "#3572A5"
     },
     {
-      "name": "Panniantong/Agent-Reach",
-      "url": "https://github.com/Panniantong/Agent-Reach",
-      "desc": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.",
-      "stars": "91k",
-      "lang": "Python",
-      "color": "#3572A5"
+      "name": "lyogavin/airllm",
+      "url": "https://github.com/lyogavin/airllm",
+      "desc": "AirLLM 70B inference with single 4GB GPU",
+      "stars": "36.6k",
+      "lang": "Jupyter Notebook",
+      "color": "#8b98ad"
     },
     {
-      "name": "getsentry/sentry",
-      "url": "https://github.com/getsentry/sentry",
-      "desc": "Developer-first error tracking and performance monitoring",
-      "stars": "45.4k",
-      "lang": "Python",
-      "color": "#3572A5"
-    },
-    {
-      "name": "calesthio/OpenMontage",
-      "url": "https://github.com/calesthio/OpenMontage",
-      "desc": "World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.",
-      "stars": "63.3k",
-      "lang": "Python",
-      "color": "#3572A5"
+      "name": "chrislgarry/Apollo-11",
+      "url": "https://github.com/chrislgarry/Apollo-11",
+      "desc": "Original Apollo 11 Guidance Computer (AGC) source code for the command and lunar modules.",
+      "stars": "74.3k",
+      "lang": "Assembly",
+      "color": "#8b98ad"
     }
   ]
 }
