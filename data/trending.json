@@ -1,70 +1,70 @@
 {
-  "generatedAt": 1791774446911,
+  "generatedAt": 1792379973845,
   "source": "github.com/trending",
   "items": [
     {
-      "name": "morluto/rea",
-      "url": "https://github.com/morluto/rea",
-      "desc": "Reverse engineer anything with agents, from app behavior down to native binaries.",
-      "stars": "110.9k",
-      "lang": "TypeScript",
-      "color": "#3178c6"
-    },
-    {
-      "name": "boykopovar/AnyPS5",
-      "url": "https://github.com/boykopovar/AnyPS5",
-      "desc": "Tool for automatic PS5 executables porting to Linux and Windows",
-      "stars": "30.4k",
-      "lang": "C++",
-      "color": "#f34b7d"
-    },
-    {
-      "name": "storytold/artcraft",
-      "url": "https://github.com/storytold/artcraft",
-      "desc": "ArtCraft is an intentional crafting engine for artists, designers, and filmmakers",
-      "stars": "18.3k",
-      "lang": "Rust",
-      "color": "#dea584"
-    },
-    {
-      "name": "cathrynlavery/diagram-design",
-      "url": "https://github.com/cathrynlavery/diagram-design",
-      "desc": "Editorial diagram design for Claude Code, Codex, GitHub Copilot, Cursor, Factory Droid, and Pi. 44 diagram types. Self-contained HTML + SVG. No shadows. No Mermaid slop.",
-      "stars": "50.6k",
-      "lang": "HTML",
-      "color": "#e34c26"
-    },
-    {
-      "name": "bilawalsidhu/gods-eye-view",
-      "url": "https://github.com/bilawalsidhu/gods-eye-view",
-      "desc": "A spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe.",
-      "stars": "51.9k",
-      "lang": "JavaScript",
-      "color": "#f1e05a"
-    },
-    {
-      "name": "pytorch/pytorch",
-      "url": "https://github.com/pytorch/pytorch",
-      "desc": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
-      "stars": "104.6k",
+      "name": "MadsLorentzen/ai-job-search",
+      "url": "https://github.com/MadsLorentzen/ai-job-search",
+      "desc": "The job search that runs on your machine. AI job application framework built on Claude Code: evaluate postings, tailor CVs, write cover letters, prep interviews. Fork it and own it.",
+      "stars": "53.7k",
       "lang": "Python",
       "color": "#3572A5"
     },
     {
-      "name": "lyogavin/airllm",
-      "url": "https://github.com/lyogavin/airllm",
-      "desc": "AirLLM 70B inference with single 4GB GPU",
-      "stars": "36.6k",
-      "lang": "Jupyter Notebook",
-      "color": "#8b98ad"
+      "name": "anthropics/claude-plugins-official",
+      "url": "https://github.com/anthropics/claude-plugins-official",
+      "desc": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+      "stars": "42.8k",
+      "lang": "Python",
+      "color": "#3572A5"
     },
     {
-      "name": "chrislgarry/Apollo-11",
-      "url": "https://github.com/chrislgarry/Apollo-11",
-      "desc": "Original Apollo 11 Guidance Computer (AGC) source code for the command and lunar modules.",
-      "stars": "74.3k",
-      "lang": "Assembly",
-      "color": "#8b98ad"
+      "name": "anomalyco/opencode",
+      "url": "https://github.com/anomalyco/opencode",
+      "desc": "The open source coding agent.",
+      "stars": "216.7k",
+      "lang": "TypeScript",
+      "color": "#3178c6"
+    },
+    {
+      "name": "cursor/plugins",
+      "url": "https://github.com/cursor/plugins",
+      "desc": "Cursor plugin specification and official plugins",
+      "stars": "12.8k",
+      "lang": "TypeScript",
+      "color": "#3178c6"
+    },
+    {
+      "name": "ruvnet/ruflo",
+      "url": "https://github.com/ruvnet/ruflo",
+      "desc": "🌊 The original agent harness. Deploy intelligent multi-player swarms, coordinate autonomous workflows, and build conversational AI systems. Features adaptive memory, self-learning intelligence, federation, vector RAG integration, and native Claude Code / Codex / Hermes and many more Integrated",
+      "stars": "76.6k",
+      "lang": "TypeScript",
+      "color": "#3178c6"
+    },
+    {
+      "name": "akitaonrails/ai-memory",
+      "url": "https://github.com/akitaonrails/ai-memory",
+      "desc": "Solution for long term memory for agent coding CLIs and to facilitate handoff between different agent vendors",
+      "stars": "10.6k",
+      "lang": "Rust",
+      "color": "#dea584"
+    },
+    {
+      "name": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "desc": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
+      "stars": "96.9k",
+      "lang": "TypeScript",
+      "color": "#3178c6"
+    },
+    {
+      "name": "HKUDS/CLI-Anything",
+      "url": "https://github.com/HKUDS/CLI-Anything",
+      "desc": "\"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub:https://clianything.cc/",
+      "stars": "54.7k",
+      "lang": "Python",
+      "color": "#3572A5"
     }
   ]
 }
